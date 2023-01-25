@@ -18,5 +18,7 @@ COPY build /usr/share/nginx/html
 COPY deployment-artifacts/app-default.conf /etc/nginx/conf.d/app-default.conf
 # Expose port
 EXPOSE 8080
+# add user
+USER 10014
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
