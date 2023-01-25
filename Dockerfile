@@ -1,24 +1,22 @@
-#FROM node:16-alpine as builder
+# ==== CONFIGURE =====
+# Use Node 18.9.1 base image
+FROM node:18.9.1-alpine 
 # Set the working directory to /app inside the container
-#WORKDIR /app
+WORKDIR /app
 # Copy app files
-#COPY build build
+COPY build /app/build
+# ==== BUILD =====
 # Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
-#RUN npm ci 
+# install serve globally
+RUN npm install --global serve 
 # Build the app
 #RUN npm run build
-
-# Bundle static assets with nginx
-FROM nginx:1.22.1-alpine as production
-WORKDIR /app
+# ==== RUN =======
+# Set the env to "production"
 ENV NODE_ENV production
-# Copy built assets from 
-COPY build /usr/share/nginx/html
-# Add your routing config to nginx
-COPY deployment-artifacts/app-default.conf /etc/nginx/conf.d/app-default.conf
-# Expose port
-EXPOSE 8080
-# add user
+# Expose the port on which the app will be running (3000 is the default that `serve` uses)
+EXPOSE 3000
+# add a user
 USER 10014
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the app
+CMD [ "serve","-s", "build" ]
