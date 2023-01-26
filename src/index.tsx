@@ -15,9 +15,17 @@ const router = createBrowserRouter([
     path: "/support",
     element: (
       <div>
-        <h1>Hello World</h1>
-        <Link to="app">Navigate to app</Link>
-        <Link to="about">About Us</Link>
+        <h1>This is the landing page</h1>
+          <div>
+            <Link to={{ pathname: '/app',}}>
+              Navigate to app
+            </Link>
+          </div>
+          <div>
+            <Link to={{ pathname: '/about',}}>
+              About Us
+            </Link>
+          </div>
       </div>
     ),
     errorElement: <ErrorBoundary />,
@@ -43,7 +51,7 @@ function ErrorBoundary() {
   return <div>
             <h1>Dang! This path is not valid.!</h1>
             <Link to="app">Navigate to app</Link>
-          </div>;
+         </div>;
 }
 
 const root = ReactDOM.createRoot(
