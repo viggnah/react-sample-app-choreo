@@ -6,29 +6,31 @@ import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
   Link,
 } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/support",
     element: (
       <div>
         <h1>Hello World</h1>
+        <Link to="app">Navigate to app</Link>
         <Link to="about">About Us</Link>
       </div>
     ),
   },
   {
-    path: "about",
+    path: "/about",
     element: <div>About</div>,
   },
   {
-    path: "app",
+    path: "/app",
     element: <App/>,
   }
-]);
+], {
+  basename: "/vhsy/react-app-with-serve/1.0.0/",
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
