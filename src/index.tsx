@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
+  useRouteError,
   Link,
 } from "react-router-dom";
 
@@ -19,18 +20,31 @@ const router = createBrowserRouter([
         <Link to="about">About Us</Link>
       </div>
     ),
+    errorElement: <ErrorBoundary />,
   },
   {
     path: "/about",
     element: <div>About</div>,
+    errorElement: <ErrorBoundary />,
   },
   {
     path: "/app",
     element: <App/>,
+    errorElement: <ErrorBoundary />,
   }
 ], {
   basename: "/vhsy/react-app-with-serve/1.0.0/",
 });
+
+function ErrorBoundary() {
+  let error = useRouteError();
+  console.error(error);
+  // Uncaught ReferenceError: path is not defined
+  return <div>
+            <h1>Dang! This path is not valid.!</h1>
+            <Link to="app">Navigate to app</Link>
+          </div>;
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

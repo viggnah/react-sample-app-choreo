@@ -1,6 +1,6 @@
 {
   "name": "my-test-app",
-  "homepage": "https://493d09e8-3379-4308-a1f3-5199b8ffc96f-dev.e1-us-east-azure.choreoapis.dev/vhsy/react-app-with-serve/1.0.0/support",
+  "homepage": "https://493d09e8-3379-4308-a1f3-5199b8ffc96f-dev.e1-us-east-azure.choreoapis.dev/vhsy/react-app-with-serve/1.0.0/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
