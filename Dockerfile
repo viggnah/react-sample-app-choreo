@@ -9,7 +9,8 @@
 #RUN npm run build
 
 # Bundle static assets with nginx
-FROM nginx:1.22.1-alpine as production
+# FROM nginx:1.22.1-alpine as production
+FROM nginxinc/nginx-unprivileged:1.22.1-alpine as production
 WORKDIR /app
 ENV NODE_ENV production
 # Copy built assets from 
